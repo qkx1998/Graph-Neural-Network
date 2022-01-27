@@ -102,3 +102,18 @@ nx.draw_networkx(
     edge_color=edge_weights, edge_vmin=0, edge_vmax=6, edge_cmap=plt.cm.Blues)
 nx.draw_networkx_edges(G, weighted_pos, edgelist=internal, edge_color="gray")
 nx.draw_networkx_edges(G, weighted_pos, edgelist=external, edge_color="gray", style="dashed")
+
+# 创建有向图
+G2 = nx.DiGraph()
+G2.add_node('A') 
+
+# 创建由B指向C的边
+G2.add_nodes_from(['B','C']) 
+
+G2.add_edge('A','B') 
+G2.add_edges_from([('B','C'),('A','C')]) 
+G2.add_edges_from([('B', 'D'), ('C', 'E')])
+
+plt.figure() 
+nx.draw_networkx(G2)
+plt.show()
