@@ -27,3 +27,10 @@ G.add_edges_from(
 #     weight='weight')
 
 len(G.nodes()) == df['RECRUIT_ID'].nunique() + df['PERSON_ID'].nunique() # 返回True
+
+
+#-------一种新的方法直接转二部图--------
+G1 = nx.Graph(df[["RECRUIT_ID", "PERSON_ID"]].values.tolist(),directed=False, weighted=False)
+
+G1.edges() == G.edges() # True
+G1.nodes() == G.nodes() # True
